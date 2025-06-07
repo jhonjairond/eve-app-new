@@ -16,6 +16,7 @@ import { useNavigation } from '@react-navigation/native';
 
 const categories = [
   'All',
+  'Hoy',
   'Music',
   'Sports',
   'Food',

@@ -14,12 +14,17 @@ import { Button } from '../components/Button';
 import { CategoryChip } from '../components/CategoryChip';
 
 const categories = [
+  'All',
+  'Hoy',
   'Music',
   'Sports',
   'Food',
   'Art',
   'Technology',
   'Business',
+  'Religious',
+  'Political',
+  'Childrens',
 ];
 
 export const CreateEventScreen = () => {
