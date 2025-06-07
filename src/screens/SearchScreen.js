@@ -15,17 +15,17 @@ import { mockEvents as allEvents } from './HomeScreen';
 import { useNavigation } from '@react-navigation/native';
 
 const categories = [
-  'All',
+  'Todos',
   'Hoy',
-  'Music',
-  'Sports',
-  'Food',
-  'Art',
-  'Technology',
-  'Business',
-  'Religious',
-  'Political',
-  'Childrens',
+  'Música',
+  'Deportes',
+  'Gastronomía',
+  'Arte',
+  'Tecnología',
+  'Negocios',
+  'Religioso',
+  'Político',
+  'Infantil',
 ];
 
 export const SearchScreen = () => {

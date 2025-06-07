@@ -43,9 +43,9 @@ export const EventDetailScreen = ({ route }) => {
       </View>
       <View style={styles.infoSection}>
         <Text style={styles.title}>{event.title}</Text>
-        <Text style={styles.date}>{event.date}</Text>
-        <Text style={styles.location}>{event.location}</Text>
-        <Text style={styles.category}>{event.category}</Text>
+        <Text style={styles.date}>Fecha: {event.date}</Text>
+        <Text style={styles.location}>Ubicación: {event.location}</Text>
+        <Text style={styles.category}>Categoría: {event.category}</Text>
         <Text style={styles.description}>{event.description}</Text>
       </View>
     </ScrollView>

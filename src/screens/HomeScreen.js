@@ -19,21 +19,21 @@ import eveLogo from '../../assets/eve-logo.png';
 import { useNavigation } from '@react-navigation/native';
 
 export const categories = [
-  'All',
+  'Todos',
   'Hoy',
-  'Music',
-  'Sports',
-  'Food',
-  'Art',
-  'Technology',
-  'Business',
-  'Religious',
-  'Political',
-  'Childrens',
+  'Música',
+  'Deportes',
+  'Gastronomía',
+  'Arte',
+  'Tecnología',
+  'Negocios',
+  'Religioso',
+  'Político',
+  'Infantil',
 ];
 
 // Asignar categorías a los eventos de ejemplo de forma distribuida
-const eventCategories = categories.slice(1); // Excluye 'All'
+const eventCategories = categories.slice(1); // Excluye 'Todos'
 export const mockEvents = Array.from({ length: 50 }, (_, i) => {
   const category = eventCategories[i % eventCategories.length];
   return {
