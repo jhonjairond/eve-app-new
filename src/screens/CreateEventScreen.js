@@ -50,7 +50,7 @@ export const CreateEventScreen = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Create Event</Text>
+        <Text style={styles.title}>Crear Evento</Text>
       </View>
 
       <View style={styles.form}>
@@ -60,14 +60,14 @@ export const CreateEventScreen = () => {
           ) : (
             <View style={styles.uploadPlaceholder}>
               <Ionicons name="image-outline" size={40} color={theme.colors.textLight} />
-              <Text style={styles.uploadText}>Add Event Image</Text>
+              <Text style={styles.uploadText}>Agregar Imagen del Evento</Text>
             </View>
           )}
         </TouchableOpacity>
 
         <TextInput
           style={styles.input}
-          placeholder="Event Title"
+          placeholder="Titulo del Evento"
           value={title}
           onChangeText={setTitle}
           placeholderTextColor={theme.colors.textLight}
@@ -75,7 +75,7 @@ export const CreateEventScreen = () => {
 
         <TextInput
           style={[styles.input, styles.textArea]}
-          placeholder="Event Description"
+          placeholder="Descripción del Evento"
           value={description}
           onChangeText={setDescription}
           multiline
@@ -85,7 +85,7 @@ export const CreateEventScreen = () => {
 
         <TextInput
           style={styles.input}
-          placeholder="Date (YYYY-MM-DD)"
+          placeholder="Fecha (YYYY-MM-DD)"
           value={date}
           onChangeText={setDate}
           placeholderTextColor={theme.colors.textLight}
@@ -93,13 +93,13 @@ export const CreateEventScreen = () => {
 
         <TextInput
           style={styles.input}
-          placeholder="Location"
+          placeholder="Ubicación"
           value={location}
           onChangeText={setLocation}
           placeholderTextColor={theme.colors.textLight}
         />
 
-        <Text style={styles.sectionTitle}>Category</Text>
+        <Text style={styles.sectionTitle}>Categoria</Text>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -117,7 +117,7 @@ export const CreateEventScreen = () => {
         </ScrollView>
 
         <Button
-          title="Create Event"
+          title="Crear Evento"
           onPress={handleCreateEvent}
           style={styles.createButton}
         />

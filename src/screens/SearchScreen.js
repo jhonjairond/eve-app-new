@@ -49,12 +49,12 @@ export const SearchScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Search Events</Text>
+        <Text style={styles.title}>Buscar Eventos</Text>
         <View style={styles.searchContainer}>
           <Ionicons name="search" size={20} color={theme.colors.textLight} />
           <TextInput
             style={styles.searchInput}
-            placeholder="Search events..."
+            placeholder="Buscar eventos..."
             value={searchQuery}
             onChangeText={setSearchQuery}
             placeholderTextColor={theme.colors.textLight}

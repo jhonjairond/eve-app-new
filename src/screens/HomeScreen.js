@@ -103,7 +103,7 @@ export const HomeScreen = () => {
             activeOpacity={0.7}
           >
             <View style={styles.buttonContent}>
-              <Ionicons name="add" size={24} color={theme.colors.text} />
+              <Ionicons name="location-outline" size={24} color={theme.colors.text} />
             </View>
           </TouchableOpacity>
           <Image source={eveLogo} style={styles.logo} resizeMode="contain" />
@@ -112,7 +112,7 @@ export const HomeScreen = () => {
             activeOpacity={0.7}
           >
             <View style={styles.buttonContent}>
-              <Ionicons name="location-outline" size={24} color={theme.colors.text} />
+              <Ionicons name="notifications-outline" size={24} color={theme.colors.text} />
             </View>
           </TouchableOpacity>
         </View>

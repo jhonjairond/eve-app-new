@@ -50,7 +50,7 @@ export const ProfileScreen = () => {
         </View>
         <Text style={styles.bio}>{mockUser.bio}</Text>
         <Button
-          title="Edit Profile"
+          title="Editar Perfil"
           variant="outline"
           onPress={() => {}}
           style={styles.editButton}
@@ -59,9 +59,9 @@ export const ProfileScreen = () => {
 
       <View style={styles.section}>
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>My Events</Text>
+          <Text style={styles.sectionTitle}>Mis Eventos</Text>
           <TouchableOpacity>
-            <Text style={styles.seeAll}>See All</Text>
+            <Text style={styles.seeAll}>Ver Todos</Text>
           </TouchableOpacity>
         </View>
 
@@ -81,29 +81,29 @@ export const ProfileScreen = () => {
 
       <View style={styles.section}>
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Settings</Text>
+          <Text style={styles.sectionTitle}>Configuración</Text>
         </View>
 
         <TouchableOpacity style={styles.settingItem}>
           <Ionicons name="notifications-outline" size={24} color={theme.colors.text} />
-          <Text style={styles.settingText}>Notifications</Text>
+          <Text style={styles.settingText}>Notificaciones</Text>
           <Ionicons name="chevron-forward" size={24} color={theme.colors.textLight} />
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.settingItem}>
           <Ionicons name="lock-closed-outline" size={24} color={theme.colors.text} />
-          <Text style={styles.settingText}>Privacy</Text>
+          <Text style={styles.settingText}>Privacidad</Text>
           <Ionicons name="chevron-forward" size={24} color={theme.colors.textLight} />
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.settingItem}>
           <Ionicons name="help-circle-outline" size={24} color={theme.colors.text} />
-          <Text style={styles.settingText}>Help & Support</Text>
+          <Text style={styles.settingText}>Ayuda y Soporte</Text>
           <Ionicons name="chevron-forward" size={24} color={theme.colors.textLight} />
         </TouchableOpacity>
 
         <Button
-          title="Sign Out"
+          title="Cerrar Sesión"
           variant="secondary"
           onPress={() => {}}
           style={styles.signOutButton}

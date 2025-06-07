@@ -1,8 +1,24 @@
-import React, { memo } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import React, { memo, useState, useRef, useCallback } from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity, Dimensions, FlatList } from 'react-native';
 import { theme } from '../theme/theme';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
+
+// Componente memoizado para la imagen del carrusel
+const CarouselImage = memo(({ uri }) => (
+  <Image
+    source={{ uri }}
+    style={styles.cardImage}
+    resizeMode="cover"
+  />
+));
+
+// Componente memoizado para el indicador de puntos
+const DotIndicator = memo(({ index, currentIndex }) => (
+  <View
+    style={[styles.dot, currentIndex === index && styles.dotActive]}
+  />
+));
 
 function CardComponent({
   title,
@@ -13,8 +29,28 @@ function CardComponent({
   onPress,
   style,
 }) {
-  // Tomar la primera imagen del array o usar la única imagen disponible
-  const imageUrl = Array.isArray(images) ? images[0] : images;
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const flatListRef = useRef(null);
+
+  // Asegurarse de que images sea un array
+  const imageArray = Array.isArray(images) ? images : [images];
+
+  const handleScroll = useCallback((e) => {
+    const index = Math.round(e.nativeEvent.contentOffset.x / SCREEN_WIDTH);
+    setCurrentIndex(index);
+  }, []);
+
+  const renderItem = useCallback(({ item }) => (
+    <CarouselImage uri={item} />
+  ), []);
+
+  const keyExtractor = useCallback((_, idx) => `card-img-${idx}`, []);
+
+  const getItemLayout = useCallback((_, index) => ({
+    length: SCREEN_WIDTH,
+    offset: SCREEN_WIDTH * index,
+    index,
+  }), []);
 
   return (
     <TouchableOpacity
@@ -23,11 +59,38 @@ function CardComponent({
       activeOpacity={0.7}
     >
       <View style={styles.cardImageContainer}>
-        <Image
-          source={{ uri: imageUrl }}
-          style={styles.cardImage}
-          resizeMode="cover"
+        <FlatList
+          ref={flatListRef}
+          data={imageArray}
+          horizontal
+          pagingEnabled
+          showsHorizontalScrollIndicator={false}
+          onMomentumScrollEnd={handleScroll}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+          getItemLayout={getItemLayout}
+          snapToInterval={SCREEN_WIDTH}
+          decelerationRate={0}
+          snapToAlignment="center"
+          initialNumToRender={3}
+          maxToRenderPerBatch={3}
+          windowSize={3}
+          removeClippedSubviews={true}
+          updateCellsBatchingPeriod={50}
+          initialScrollIndex={0}
+          scrollEventThrottle={16}
+          directionalLockEnabled={true}
+          disableIntervalMomentum={true}
+          disableScrollViewPanResponder={false}
+          contentContainerStyle={{ flexGrow: 1 }}
         />
+        {imageArray.length > 1 && (
+          <View style={styles.dotsContainer}>
+            {imageArray.map((_, idx) => (
+              <DotIndicator key={idx} index={idx} currentIndex={currentIndex} />
+            ))}
+          </View>
+        )}
       </View>
       <View style={styles.content}>
         <Text style={styles.title} numberOfLines={1}>
@@ -69,10 +132,31 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   cardImage: {
-    width: '100%',
-    height: '100%',
+    width: SCREEN_WIDTH,
+    height: 460,
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
+  },
+  dotsContainer: {
+    position: 'absolute',
+    bottom: 16,
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  dot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: '#888',
+    marginHorizontal: 4,
+    opacity: 0.5,
+  },
+  dotActive: {
+    backgroundColor: theme.colors.primary,
+    opacity: 1,
   },
   content: {
     padding: 0,
